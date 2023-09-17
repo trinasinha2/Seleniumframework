@@ -22,6 +22,8 @@ public class SampleTest
 	public void sample3()
 	{
 		System.out.println("Hello 3");
+		System.out.println("Hello 10");	
+		System.out.println("Hello 11");	
 		Assert.assertTrue(false);
 	}
 
