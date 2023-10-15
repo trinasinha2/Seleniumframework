@@ -30,10 +30,10 @@ public class BrowserFactory
 			cap.setCapability("browserVersion","117.0");
 			cap.setCapability("platformName","linux");
 			// read headless property from config file and if set to true then run the test in headless mode via --headless argument
-			Chromeoptions opt=new Chromeoptions();
-			//opt.addArguments("--headless");
-			opt.merge(cap);
+			ChromeOptions opt=new ChromeOptions();
 			opt.addArguments("--no-sandbox");
+			opt.merge(cap);
+			
 			try{
 			driver=new RemoteWebDriver(new URL("http://13.235.51.96:4444/wd/hub"),opt);
 			}
