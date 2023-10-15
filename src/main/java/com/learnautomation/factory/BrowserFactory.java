@@ -24,7 +24,10 @@ public class BrowserFactory
 		if(browserName.equalsIgnoreCase("Chrome") || browserName.equalsIgnoreCase("GC") || browserName.equalsIgnoreCase("Google Chrome"))
 		{
 			// read headless property from config file and if set to true then run the test in headless mode via --headless argument
-			driver=new ChromeDriver();
+			Chromeoptions opt=new Chromeoptions();
+			opt.addArguments("--headless");
+			opt.addArguments("--no-sandbox");
+			driver=new ChromeDriver(opt);
 			
 		} else if(browserName.equalsIgnoreCase("Firefox") || browserName.equalsIgnoreCase("FF") || browserName.equalsIgnoreCase("Mozila"))
 		{
