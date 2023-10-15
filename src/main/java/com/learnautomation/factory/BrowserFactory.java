@@ -23,13 +23,23 @@ public class BrowserFactory
 		
 		if(browserName.equalsIgnoreCase("Chrome") || browserName.equalsIgnoreCase("GC") || browserName.equalsIgnoreCase("Google Chrome"))
 		{
+			DesiredCapabilities cap=new DesiredCapabilities();
+			cap.setCapability("browserName","chrome");
+			cap.setCapability("browserVersion","117.0");
+			cap.setCapability("platformName","linux");
 			// read headless property from config file and if set to true then run the test in headless mode via --headless argument
 			Chromeoptions opt=new Chromeoptions();
-			opt.addArguments("--headless");
+			//opt.addArguments("--headless");
+			opt.merge(cap);
 			opt.addArguments("--no-sandbox");
-			driver=new ChromeDriver(opt);
-			
-		} else if(browserName.equalsIgnoreCase("Firefox") || browserName.equalsIgnoreCase("FF") || browserName.equalsIgnoreCase("Mozila"))
+			try{
+			driver=new RemoteWebDriver(new URL("http://13.235.51.96:4444/wd/hub"),opt);
+			}
+			catch(Exception e){
+				System.out.println("could not connect to grid");
+			}
+		} 
+		else if(browserName.equalsIgnoreCase("Firefox") || browserName.equalsIgnoreCase("FF") || browserName.equalsIgnoreCase("Mozila"))
 		{
 			// read headless property from config file and if set to true then run the test in headless mode via --headless argument
 			driver=new FirefoxDriver();
