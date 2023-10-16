@@ -35,7 +35,7 @@ public class BrowserFactory
 			opt.merge(cap);
 			
 			try{
-			driver=new RemoteWebDriver(new URL("http://13.235.51.96:4444/wd/hub"),opt);
+			driver=new RemoteWebDriver(new URL("http://13.233.166.100:4444//wd/hub"),opt);
 			}
 			catch(Exception e){
 				System.out.println("could not connect to grid");
